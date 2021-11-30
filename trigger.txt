@@ -1,0 +1,34 @@
+- Trigger que inserte la cantidad de estudiantes en un período cada vez que se matricule los estudiante y con una restricción de que solo permite la cantidad de 40 estudiantes por curso.
+
+
+CREATE FUNCTION VALIDAR_TRIGER4 () returns trigger as 
+$$
+declare
+
+NoAplica4 numeric;
+usuario varchar(30):=user;
+fecha_act date:=current_date;
+tiempo_act time:=current_time;
+
+begin 
+	insert into "trigger_curso" values (new.cod_curso, new.cod_paralelo,
+							new.cod_nivel, new.cod_aula, new.cod_periodo, new.num_estudiante,
+							new.tutor_curso, usuario, fecha_act, tiempo_act);	
+  RETURN new;
+  select 
+  curso.num_estudiante
+  into NoAplica4 from curso;
+   IF (NoAplica4 > '40') THEN 
+       RAISE EXCEPTION 'Los cursos no aceptan más de 40 estudiantes';
+	   END IF ;
+	   
+	   
+end 
+$$
+LANGUAGE PLPGSQL;
+
+CREATE TRIGGER Tr_insertar1 before insert ON curso
+FOR EACH ROW EXECUTE PROCEDURE VALIDAR_TRIGER4();
+
+insert into curso values  ('cu11', 'pa11',  'ni11', 'au11', 
+				       'pe11','35', 'CESAR PESÁNTEZ'  )

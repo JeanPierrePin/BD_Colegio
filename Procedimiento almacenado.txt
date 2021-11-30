@@ -1,0 +1,15 @@
+-- Procedimiento almacenado que devuelva el nombre de familiares de un estudiante que se le ingrese. 
+create function nom_familiar (varchar)
+returns varchar 
+as $$
+	select 
+	nom_representante
+		from estudiante
+	inner join table_like on estudiante.cod_estudiante = table_like.cod_estudiante
+	inner join representante on table_like.cod_representante = representante.cod_representante
+	where nom_estudiante = $1
+	
+$$
+language sql
+	
+select nom_familiar ('SANDRA XIMENA')

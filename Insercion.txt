@@ -1,0 +1,157 @@
+INSERT INTO tipo_representante (cod_tipo_representante, nom_tipo_representante) 
+VALUES
+('tr01','REPRESENTANTE LEGAL'),
+('tr02', 'REPREESENTANTE LEGAL'),
+('tr03', 'REPRESENTANTE NATURAL'),
+('tr04', 'REPRESENTANTE LEGAL'),
+('tr05', 'REPRESENTANTE LEGAL'),
+('tr06', 'REPRESENTANTE NATURAL'),
+('tr07', 'REPRESENTANTE NATURAL')
+
+/* Insersion de repesentante */
+insert into representante (cod_representante, cod_tipo_representante, ced_representante, nom_representante, ape_representante, domicilio, tel_representante, direccion_trabajo, tel_trabajo, activo, parentesco) values
+('pa01', 'tr01','1311541485', 'SANTIAGO MARTÍN', 'AGUILAR HEREDIA', 'ANIBAL SAN ANDRES','0965565525', 'LOS ESTEROS','052303955','ACTIVOS','PADRE'),
+('pa02', 'tr02','1316574852', 'MYRIAN ROCÍO','BUÑAY CUYO','LEONIDAS','0986565655','LEONIDAS','0565658587','ACTIVOS','MADRE'),
+('pa03', 'tr03','1332585854', 'GUILLERMO ALBERTO', 'ALARCÓN CALDERON ', 'COLORADO','0998554142', 'COLORADO','0523074859','INACTIVOS','ABUELO'),
+('pa04','tr04','1352653255','ROGER PAUL','CABRERA NAZARENO', 'MANTA','0986565563','LOS ESTEROS','0545887785','ACTIVOS','PADRE'),
+('pa05','tr05','1312626262','MERCEDES AMIRA','HERNÁNDEZ PAZMIÑO','MONTECRISTI','0916541253','MONTECRISTI','0523036541','ACTIVOS','MADRE'),
+('pa06','tr06','1312252555', 'ANA MARÍA','HIDALGO SANTAMARÍA','COLORADO','0916583457','MANTA','0523065895','INACTIVOS','TIA'),
+('pa07','tr07','1315484488','JORGE LUIS','GUEVARA CARRILLO','SAN MATEO','0965653321','MANTA','0512221445','INACTIVOS','TIO')
+
+
+-- ingreso de tabla estudiante
+insert into estudiante (cod_estudiante, cedu_estudiante, nom_estudiante, ape_estudiante, gen_estudiante, naci_estudiante, dire_estudiante, tel_estudiante) values
+('es01', '1316548976','FRANKLIN PAUL', 'AGUILAR BENITEZ', 'MASCULINO','22/9/2007', 'ANIBAL SAN ANDRES','0986556532'),
+('es02', '1314748945','SANDRA XIMENA', 'AGUIRRE BUÑAI', 'FEMENINO','16/7/2004', 'COLORADO','0978544654'),
+('es03', '1315855444','ROMÁN DE JESÚS', 'ALARCON BURNEO', 'MASCULINO','9/7/2002', 'COLORADO','0995678656'),
+('es04','1356141145','KAROOL SUSANA','CABRERA HARO','FEMENINO','16/8/2002','ANIBAL SAN ANDRES','0989656513'),
+('es05','1302654685','JUAN CARLOS','GONZÁLEZ HERNANDEZ','MASCULINO','13/4/2005','LEONIDAS','0989654512'),
+('es06','1316589898','ÉDISON POMERIO','CÁRDENAS HIDALGO','MASCULINO','3/8/2006','COLORADO','0963332254'),
+('es07','1315546884','MARTHA ELIZABETH','GUEVARA INFANTES','FEMENINO','6/5/2003','SAN MATEO','0985745632')
+
+-- ingreso de tabla paralelo
+insert into paralelo (cod_paralelo, nom_paralelo) values
+('pa01', 'A'),
+('pa02', 'B'),
+('pa03', 'A'),
+('pa04', 'B'),
+('pa05', 'A'),
+('pa06', 'B'),
+('pa07', 'C')
+
+
+-- ingreso de tabla nivel
+insert into nivel (cod_nivel, nom_nivel) values
+('ni01', 'OCTAVO'),
+('ni02', 'NOVENO'),
+('ni03', 'DECIMO'),
+('ni04','1BACHILLERATO'),
+('ni05','2BACHILLERATO'),
+('ni06','3BACHILLERATO'),
+('ni07','3BACHILLERATO')
+
+
+insert into ubicacion_aula (cod_aula, nom_aula) values
+('au01', 'PRIMER AÑO'),
+('au02', 'SEGUNDO AÑO'),
+('au03', 'TERCER AÑO'),
+('au04', 'CUARTO AÑO'),
+('au05', 'QUINTO AÑO'),
+('au06', 'SEXTO AÑO'),
+('au07', 'SEXTO AÑO')
+
+
+-- ingreso de tabla materia
+insert into materias (cod_materia,cod_nivel, nomre_materia) values
+('mat01','ni01', 'MATEMATICAS'),
+('mat02','ni02','HISTORIA'),
+('mat03','ni03', 'INGLES'),
+('mat04','ni04', 'QUIMICA'),
+('mat05','ni05', 'FISICA'),
+('mat06','ni06', 'INFORMATICA'),
+('mat07','ni07', 'CIENCIA NATURALES')
+
+-- ingreso de tabla profesor
+insert into profesor (cod_profesor, ced_profesor, nom_profesor, ape_profesor,tel_profesor, edad_profesor) values
+('pro01', '1314567875', 'EDUARDO SANTIAGO', 'ANDRADE YÁNEZ', '0945678542', '1980-08-16'),
+('pro02', '1314584742', 'BETTY MILENA', 'ANGULO PERLAZA', '0945465857', '1978-06-07'),
+('pro03', '1314646244', 'CESAR FERNANDO', 'PESÁNTEZ OCHOA', '0921453687', '1992-06-04'),
+('pro04', '1312241498', 'WALTER SAMNO', 'MACÍAS FERNÁNDEZ', '0998564451', '1984-09-21'),
+('pro05', '1345787974', 'CARMEN MARÍANELA', 'MALDONADO LÓPEZ', '0912543612', '1982-08-10'),
+('pro06', '1317879484', 'GABRIELA EULALIA', 'NAVAS AMOROSO', '0998564587', '1983-05-15'),
+('pro07', '1375774444', 'DIONICIO VALENTÍN', 'PARDO ROJAS', '0987564565', '1987-03-26')
+
+-- ingreso de tabla tutoria
+insert into tutoria (cod_tutoria_, cod_clase, horario) values
+('tu01', 'cla01', 'lunes de 8:00 a 9:00'),
+('tu02', 'cla02', 'jueves de 9:00 a 10:00'),
+('tu03', 'cla03', 'miercoles de 11:00 a 12:00'),
+('tu04', 'cla03', 'martes de 11:00 a 12:00'),
+('tu05', 'cla03', 'lunes de 11:00 a 12:00'),
+('tu06', 'cla03', 'jueves de 9:00 a 10:00'),
+('tu07', 'cla03', 'viernes de 8:00 a 9:00') 
+
+
+--ingreso de tabla curso
+insert into curso (cod_curso,cod_paralelo, cod_nivel,cod_aula, cod_periodo, num_estudiante,tutor_curso) values
+('cu01','pa01','ni01', 'au01','pe01','34', 'EDUARDO ANDRADE YÁNEZ'),
+('cu02','pa02', 'ni02','au02','pe02','37','BETTY ANGULO PERLAZA' ),
+('cu03','pa03', 'ni03','au03','pe03','39','CESAR PESÁNTEZ OCHOA' ),
+('cu04','pa04', 'ni04','au04','pe04','41','WALTER MACÍAS FERNÁNDEZ' ),
+('cu05','pa05', 'ni05','au05','pe05','42','CARMEN MALDONADO LÓPEZ' ),
+('cu06','pa06', 'ni06','au06','pe06','33','GABRIELA NAVAS AMOROSO' ),
+('cu07','pa07', 'ni07','au07','pe07','36','DIONICIO PARDO ROJAS' )
+
+
+
+-- ingreso de tabla periodo
+insert into periodo (cod_periodo, fec_inicio, fec_fin, ano_periodo) values
+('pe01','1/1/2021', '1/2/2021', '2021'),
+('pe02', '1/3/2021','1/4/2021','2021'),
+('pe03', '1/5/2019','1/6/2019','2019'),
+('pe04', '1/7/2021','1/8/2021','2021'),
+('pe05', '1/9/2020','1/10/2020','2021'),
+('pe06', '1/11/2021','1/12/2021','2020'),
+('pe07', '1/1/2019','1/2/2019','2019')
+
+
+-- ingreso de tabla matricula
+insert into matricula(cod_matricula, cod_curso, cod_estudiante, cod_periodo) values
+('ma01','cu01','es01','pe01'),
+('ma02','cu02','es02','pe02' ),
+('ma03','cu03','es03', 'pe03'),
+('ma04','cu04','es04','pe04'),
+('ma05','cu05','es05','pe05'),
+('ma06','cu06','es06','pe06'),
+('ma07','cu07','es07','pe07')
+
+
+-- ingreso de tabla clase
+insert into clase (cod_clase, cod_profesor, cod_materia, cod_curso, horario_clase) values
+('cla01','pro01', 'mat01','cu01',   'lunes de 8:00 a 10:00'),
+('cla02', 'pro02','mat02', 'cu02',  'miercoles de 10:00 a 12:00'),
+('cla03', 'pro03','mat03', 'cu03',  'jueves de 9:00 a 11:00'),
+('cla04', 'pro04','mat04', 'cu03',  'viernes de 10:00 a 12:00'),
+('cla05', 'pro05','mat05', 'cu03',  'martes de 8:00 a 10:00'),
+('cla06', 'pro06','mat06', 'cu03',  'miercooles de 9:00 a 11:00'),
+('cla07', 'pro07','mat07', 'cu03',  'jeves 9:00 a 11:00')
+
+-- ingreso de tabla calificacion
+insert into calificacion (cod_calificacion, cod_matricula,cod_profesor,cod_materia,nota1, nota2, nota_final,estado_nota,not_recuperadion, asis_estudiante, falta_estudiante) values
+('ca01', 'ma01', 'pro01','mat01','9', '9','18', 'APROBADO','NO APLICA', '158','12' ),
+('ca02', 'ma02', 'pro02','mat02','9', '6','15','REPROBADO','5','164','6'),
+('ca03', 'ma03', 'pro03','mat03','6', '8','14','REPROBADO','NO APLICA','162','7' ),
+('ca04', 'ma04', 'pro04','mat04','9', '7','16', 'APROBADO','10','163','7' ),
+('ca05', 'ma05', 'pro05','mat05','9', '9','18','APROBADO','NO APLICA','169','1' ),
+('ca06', 'ma06', 'pro06','mat06','7', '10','17','APROBADO','NO APLICA','161','9' ),
+('ca07', 'ma07', 'pro07','mat07','9', '7','16','REPROBADO','7', '160','10')
+
+
+insert into relationship_24 (cod_estudiante, cod_representante) values
+('es01','pa01'),
+('es02','pa02'),
+('es03','pa03'),
+('es04','pa04'),
+('es05','pa05'),
+('es06','pa06'),
+('es07','pa07')

@@ -1,0 +1,8 @@
+Reporte que muestre las clases dadas por cada profesor.
+
+select 
+profesor.nom_profesor,
+count (clase)
+from profesor 
+inner join clase on profesor.cod_profesor = clase.cod_profesor
+group by profesor.nom_profesor, clase 

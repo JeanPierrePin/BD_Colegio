@@ -1,0 +1,490 @@
+/*==============================================================*/
+/* Table: CALIFICACION                                          */
+/*==============================================================*/
+create table CALIFICACION (
+COD_CALIFICACION     VARCHAR(10)          not null,
+COD_MATRICULA        VARCHAR(10)          not null,
+COD_PROFESOR         VARCHAR(10)          not null,
+COD_ESTUDIANTE       VARCHAR(10)          not null,
+COD_MATERIA          VARCHAR(10)          not null,
+NOMBRES_ESTUDIANTE   VARCHAR(40)          null,
+NOMBRES_PROFESOR     VARCHAR(40)          null,
+NOMBRE_CURSO         VARCHAR(30)          null,
+NOTA1                NUMERIC              null,
+NOTA2                NUMERIC              null,
+NOTA_FINAL           NUMERIC              null,
+ESTADO_PERIODO       VARCHAR(20)          null,
+ESTU_APROBADO        VARCHAR(15)          null,
+ESTU_REPROBADO       VARCHAR(15)          null,
+NOT_RECUPERADION     VARCHAR(10)          null,
+constraint PK_CALIFICACION primary key (COD_CALIFICACION)
+);
+
+/*==============================================================*/
+/* Index: CALIFICACION_PK                                       */
+/*==============================================================*/
+create unique index CALIFICACION_PK on CALIFICACION (
+COD_CALIFICACION
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_5_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_5_FK on CALIFICACION (
+COD_MATRICULA
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_15_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_15_FK on CALIFICACION (
+COD_PROFESOR
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_19_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_19_FK on CALIFICACION (
+COD_ESTUDIANTE
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_20_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_20_FK on CALIFICACION (
+COD_MATERIA
+);
+
+/*==============================================================*/
+/* Table: CLASE                                                 */
+/*==============================================================*/
+create table CLASE (
+COD_CLASE            VARCHAR(10)          not null,
+COD_PROFESOR         VARCHAR(10)          not null,
+COD_MATERIA          VARCHAR(10)          not null,
+COD_CURSO            VARCHAR(10)          not null,
+HORARIO_CLASE        VARCHAR(30)          null,
+constraint PK_CLASE primary key (COD_CLASE)
+);
+
+/*==============================================================*/
+/* Index: CLASE_PK                                              */
+/*==============================================================*/
+create unique index CLASE_PK on CLASE (
+COD_CLASE
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_6_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_6_FK on CLASE (
+COD_PROFESOR
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_7_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_7_FK on CLASE (
+COD_MATERIA
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_11_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_11_FK on CLASE (
+COD_CURSO
+);
+
+/*==============================================================*/
+/* Table: CURSO                                                 */
+/*==============================================================*/
+create table CURSO (
+COD_CURSO            VARCHAR(10)          not null,
+COD_PARALELO         VARCHAR(10)          not null,
+COD_NIVEL            VARCHAR(10)          not null,
+COD_AULA             VARCHAR(10)          not null,
+COD_PERIODO          VARCHAR(10)          null,
+NUM_ESTUDIANTE       NUMERIC              null,
+TUTOR_CURSO          VARCHAR(30)          null,
+constraint PK_CURSO primary key (COD_CURSO)
+);
+
+/*==============================================================*/
+/* Index: CURSO_PK                                              */
+/*==============================================================*/
+create unique index CURSO_PK on CURSO (
+COD_CURSO
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_8_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_8_FK on CURSO (
+COD_PARALELO
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_9_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_9_FK on CURSO (
+COD_NIVEL
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_18_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_18_FK on CURSO (
+COD_AULA
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_21_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_21_FK on CURSO (
+COD_PERIODO
+);
+
+/*==============================================================*/
+/* Table: ESTUDIANTE                                            */
+/*==============================================================*/
+create table ESTUDIANTE (
+COD_ESTUDIANTE       VARCHAR(10)          not null,
+CEDU_ESTUDIANTE      VARCHAR(10)          null,
+NOM_ESTUDIANTE       VARCHAR(30)          null,
+APE_ESTUDIANTE       VARCHAR(30)          null,
+GEN_ESTUDIANTE       VARCHAR(30)          null,
+NACI_ESTUDIANTE      DATE                 null,
+DIRE_ESTUDIANTE      VARCHAR(50)          null,
+TEL_ESTUDIANTE       VARCHAR(10)          null,
+constraint PK_ESTUDIANTE primary key (COD_ESTUDIANTE)
+);
+
+/*==============================================================*/
+/* Index: ESTUDIANTE_PK                                         */
+/*==============================================================*/
+create unique index ESTUDIANTE_PK on ESTUDIANTE (
+COD_ESTUDIANTE
+);
+
+/*==============================================================*/
+/* Table: MATERIAS                                              */
+/*==============================================================*/
+create table MATERIAS (
+COD_MATERIA          VARCHAR(10)          not null,
+NOMRE_MATERIA        VARCHAR(20)          null,
+constraint PK_MATERIAS primary key (COD_MATERIA)
+);
+
+/*==============================================================*/
+/* Index: MATERIAS_PK                                           */
+/*==============================================================*/
+create unique index MATERIAS_PK on MATERIAS (
+COD_MATERIA
+);
+
+/*==============================================================*/
+/* Table: MATRICULA                                             */
+/*==============================================================*/
+create table MATRICULA (
+COD_MATRICULA        VARCHAR(10)          not null,
+COD_CURSO            VARCHAR(10)          not null,
+COD_ESTUDIANTE       VARCHAR(10)          not null,
+COD_PADRE            VARCHAR(10)          not null,
+COD_PERIODO          VARCHAR(10)          null,
+NOTA1                INT4                 null,
+NOTA2                INT4                 null,
+NOTA_FINAL           INT4                 null,
+constraint PK_MATRICULA primary key (COD_MATRICULA)
+);
+
+/*==============================================================*/
+/* Index: MATRICULA_PK                                          */
+/*==============================================================*/
+create unique index MATRICULA_PK on MATRICULA (
+COD_MATRICULA
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_3_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_3_FK on MATRICULA (
+COD_CURSO
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_12_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_12_FK on MATRICULA (
+COD_ESTUDIANTE
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_13_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_13_FK on MATRICULA (
+COD_PADRE
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_17_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_17_FK on MATRICULA (
+COD_PERIODO
+);
+
+/*==============================================================*/
+/* Table: NIVEL                                                 */
+/*==============================================================*/
+create table NIVEL (
+COD_NIVEL            VARCHAR(10)          not null,
+NOM_NIVEL            VARCHAR(20)          null,
+constraint PK_NIVEL primary key (COD_NIVEL)
+);
+
+/*==============================================================*/
+/* Index: NIVEL_PK                                              */
+/*==============================================================*/
+create unique index NIVEL_PK on NIVEL (
+COD_NIVEL
+);
+
+/*==============================================================*/
+/* Table: PARALELO                                              */
+/*==============================================================*/
+create table PARALELO (
+COD_PARALELO         VARCHAR(10)          not null,
+NOM_PARALELO         VARCHAR(20)          null,
+constraint PK_PARALELO primary key (COD_PARALELO)
+);
+
+/*==============================================================*/
+/* Index: PARALELO_PK                                           */
+/*==============================================================*/
+create unique index PARALELO_PK on PARALELO (
+COD_PARALELO
+);
+
+/*==============================================================*/
+/* Table: PERIODO                                               */
+/*==============================================================*/
+create table PERIODO (
+COD_PERIODO          VARCHAR(10)          not null,
+FEC_INICIO           DATE                 null,
+FEC_FIN              DATE                 null,
+ANO_PERIODO          VARCHAR(20)          null,
+constraint PK_PERIODO primary key (COD_PERIODO)
+);
+
+/*==============================================================*/
+/* Index: PERIODO_PK                                            */
+/*==============================================================*/
+create unique index PERIODO_PK on PERIODO (
+COD_PERIODO
+);
+
+/*==============================================================*/
+/* Table: PROFESOR                                              */
+/*==============================================================*/
+create table PROFESOR (
+COD_PROFESOR         VARCHAR(10)          not null,
+CED_PROFESOR         VARCHAR(10)          null,
+NOM_PROFESOR         VARCHAR(40)          null,
+APE_PROFESOR         VARCHAR(40)          null,
+TEL_PROFESOR         VARCHAR(10)          null,
+EDAD_PROFESOR        DATE                 null,
+constraint PK_PROFESOR primary key (COD_PROFESOR)
+);
+
+/*==============================================================*/
+/* Index: PROFESOR_PK                                           */
+/*==============================================================*/
+create unique index PROFESOR_PK on PROFESOR (
+COD_PROFESOR
+);
+
+/*==============================================================*/
+/* Table: REPRESENTANTE                                         */
+/*==============================================================*/
+create table REPRESENTANTE (
+COD_PADRE            VARCHAR(10)          not null,
+COD_TIPO_REPRESENTANTE VARCHAR(10)          not null,
+CED_PADRE            VARCHAR(10)          null,
+NOM_PADRE            VARCHAR(30)          null,
+APE_PADRE            VARCHAR(30)          null,
+DOMICILIO_PADRE      VARCHAR(30)          null,
+TEL_PADRE            VARCHAR(10)          null,
+DIRECCION_TRABA_PADRE VARCHAR(30)          null,
+TEL_TRABA_PADRE      VARCHAR(10)          null,
+PADRE_ACTIVIO        VARCHAR(20)          null,
+CED_MADRE            VARCHAR(10)          null,
+NOM_MADRE            VARCHAR(30)          null,
+APE_MADRE            VARCHAR(30)          null,
+DOMICILIO_MADRE      VARCHAR(50)          null,
+TEL_MADRE            VARCHAR(10)          null,
+DIRECCION__TRABA_MADRE VARCHAR(40)          null,
+TEL_TRABA_MADRE      VARCHAR(10)          null,
+MADRE_ACTIVO         VARCHAR(20)          null,
+REPRESENTANTE_LEGAL  VARCHAR(10)          null,
+constraint PK_REPRESENTANTE primary key (COD_PADRE)
+);
+
+/*==============================================================*/
+/* Index: REPRESENTANTE_PK                                      */
+/*==============================================================*/
+create unique index REPRESENTANTE_PK on REPRESENTANTE (
+COD_PADRE
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_14_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_14_FK on REPRESENTANTE (
+COD_TIPO_REPRESENTANTE
+);
+
+/*==============================================================*/
+/* Table: TIPO_REPRESENTANTE                                    */
+/*==============================================================*/
+create table TIPO_REPRESENTANTE (
+COD_TIPO_REPRESENTANTE VARCHAR(10)          not null,
+CED_TIPO_REPRESENTANTE VARCHAR(10)          null,
+NOM_TIPO_REPRESENTANTE VARCHAR(30)          null,
+APE_TIPO_REPRESENTANTE VARCHAR(30)          null,
+PARENTESCO           VARCHAR(30)          null,
+TEL_TIPO_REPRESENTANTE VARCHAR(10)          null,
+DOMICILIO_TIPO_REPRESENTANTE VARCHAR(40)          null,
+RERPESENTANTE_LEGAL  VARCHAR(20)          null,
+constraint PK_TIPO_REPRESENTANTE primary key (COD_TIPO_REPRESENTANTE)
+);
+
+/*==============================================================*/
+/* Index: TIPO_REPRESENTANTE_PK                                 */
+/*==============================================================*/
+create unique index TIPO_REPRESENTANTE_PK on TIPO_REPRESENTANTE (
+COD_TIPO_REPRESENTANTE
+);
+
+/*==============================================================*/
+/* Table: TUTORIA                                               */
+/*==============================================================*/
+create table TUTORIA (
+COD_TUTORIA_         VARCHAR(10)          not null,
+COD_CLASE            VARCHAR(10)          not null,
+HORARIO              VARCHAR(40)          null,
+constraint PK_TUTORIA primary key (COD_TUTORIA_)
+);
+
+/*==============================================================*/
+/* Index: TUTORIA_PK                                            */
+/*==============================================================*/
+create unique index TUTORIA_PK on TUTORIA (
+COD_TUTORIA_
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_22_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_22_FK on TUTORIA (
+COD_CLASE
+);
+
+/*==============================================================*/
+/* Table: UBICACION_AULA                                        */
+/*==============================================================*/
+create table UBICACION_AULA (
+COD_AULA             VARCHAR(10)          not null,
+NOM_AULA             VARCHAR(40)          null,
+constraint PK_UBICACION_AULA primary key (COD_AULA)
+);
+
+/*==============================================================*/
+/* Index: UBICACION_AULA_PK                                     */
+/*==============================================================*/
+create unique index UBICACION_AULA_PK on UBICACION_AULA (
+COD_AULA
+);
+
+alter table CALIFICACION
+   add constraint FK_CALIFICA_RELATIONS_PROFESOR foreign key (COD_PROFESOR)
+      references PROFESOR (COD_PROFESOR)
+      on delete restrict on update restrict;
+
+alter table CALIFICACION
+   add constraint FK_CALIFICA_RELATIONS_ESTUDIAN foreign key (COD_ESTUDIANTE)
+      references ESTUDIANTE (COD_ESTUDIANTE)
+      on delete restrict on update restrict;
+
+alter table CALIFICACION
+   add constraint FK_CALIFICA_RELATIONS_MATERIAS foreign key (COD_MATERIA)
+      references MATERIAS (COD_MATERIA)
+      on delete restrict on update restrict;
+
+alter table CALIFICACION
+   add constraint FK_CALIFICA_RELATIONS_MATRICUL foreign key (COD_MATRICULA)
+      references MATRICULA (COD_MATRICULA)
+      on delete restrict on update restrict;
+
+alter table CLASE
+   add constraint FK_CLASE_RELATIONS_CURSO foreign key (COD_CURSO)
+      references CURSO (COD_CURSO)
+      on delete restrict on update restrict;
+
+alter table CLASE
+   add constraint FK_CLASE_RELATIONS_PROFESOR foreign key (COD_PROFESOR)
+      references PROFESOR (COD_PROFESOR)
+      on delete restrict on update restrict;
+
+alter table CLASE
+   add constraint FK_CLASE_RELATIONS_MATERIAS foreign key (COD_MATERIA)
+      references MATERIAS (COD_MATERIA)
+      on delete restrict on update restrict;
+
+alter table CURSO
+   add constraint FK_CURSO_RELATIONS_UBICACIO foreign key (COD_AULA)
+      references UBICACION_AULA (COD_AULA)
+      on delete restrict on update restrict;
+
+alter table CURSO
+   add constraint FK_CURSO_RELATIONS_PERIODO foreign key (COD_PERIODO)
+      references PERIODO (COD_PERIODO)
+      on delete restrict on update restrict;
+
+alter table CURSO
+   add constraint FK_CURSO_RELATIONS_PARALELO foreign key (COD_PARALELO)
+      references PARALELO (COD_PARALELO)
+      on delete restrict on update restrict;
+
+alter table CURSO
+   add constraint FK_CURSO_RELATIONS_NIVEL foreign key (COD_NIVEL)
+      references NIVEL (COD_NIVEL)
+      on delete restrict on update restrict;
+
+alter table MATRICULA
+   add constraint FK_MATRICUL_RELATIONS_ESTUDIAN foreign key (COD_ESTUDIANTE)
+      references ESTUDIANTE (COD_ESTUDIANTE)
+      on delete restrict on update restrict;
+
+alter table MATRICULA
+   add constraint FK_MATRICUL_RELATIONS_REPRESEN foreign key (COD_PADRE)
+      references REPRESENTANTE (COD_PADRE)
+      on delete restrict on update restrict;
+
+alter table MATRICULA
+   add constraint FK_MATRICUL_RELATIONS_PERIODO foreign key (COD_PERIODO)
+      references PERIODO (COD_PERIODO)
+      on delete restrict on update restrict;
+
+alter table MATRICULA
+   add constraint FK_MATRICUL_RELATIONS_CURSO foreign key (COD_CURSO)
+      references CURSO (COD_CURSO)
+      on delete restrict on update restrict;
+
+alter table REPRESENTANTE
+   add constraint FK_REPRESEN_RELATIONS_TIPO_REP foreign key (COD_TIPO_REPRESENTANTE)
+      references TIPO_REPRESENTANTE (COD_TIPO_REPRESENTANTE)
+      on delete restrict on update restrict;
+
+alter table TUTORIA
+   add constraint FK_TUTORIA_RELATIONS_CLASE foreign key (COD_CLASE)
+      references CLASE (COD_CLASE)
+      on delete restrict on update restrict;
